@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars_def.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 01:14:56 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/20 01:14:56 by kihkim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 void	def_cf(t_info *info)
@@ -34,5 +46,4 @@ void	def_r(t_info *info)
 		if (info->pas_info.check == 1)
 			info->pas_info.letter = info->pas_info.hei;
 	}
-
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_util.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 01:15:32 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/20 01:15:32 by kihkim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int		check_valid_word(char *line, int i)
@@ -19,13 +31,13 @@ void	check_def(char *line, t_info *info, char c)
 {
 	while (line[info->pas_info.i] == ' ')
 		info->pas_info.i++;
-	if (line[info->pas_info.i] == c && line[info->pas_info.i+1] == ' ')
+	if (line[info->pas_info.i] == c && line[info->pas_info.i + 1] == ' ')
 	{
 		info->pas_info.level = 1;
 		info->pas_info.i = info->pas_info.i + 2;
 		info->pas_info.def = c;
 	}
-	else if (line[info->pas_info.i] == c && line[info->pas_info.i+1] == '\0')
+	else if (line[info->pas_info.i] == c && line[info->pas_info.i + 1] == '\0')
 	{
 		if (c == 'C')
 			info->gnl_info.cc[0] = 777;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_util2.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/20 01:34:11 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/20 01:34:12 by kihkim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int		sep_c_f(char *line, t_info *info, int res)
@@ -38,7 +50,9 @@ int		sep_r(char *line, t_info *info, int res)
 
 int		put_letter2(char *line, t_info *info)
 {
-	int res = 1;
+	int res;
+
+	res = 1;
 	if ((line[info->pas_info.i] >= 48 && line[info->pas_info.i] <= 57) == 1)
 	{
 		check_letter(info);

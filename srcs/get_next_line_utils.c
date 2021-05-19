@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kihkim <kihkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 19:23:10 by kihkim            #+#    #+#             */
-/*   Updated: 2020/10/19 18:05:59 by kihkim           ###   ########.fr       */
+/*   Created: 2021/05/20 01:31:54 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/20 01:31:57 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ char		*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 && !s2)
 		return (0);
-	// if (!(s1) || !(s2))
-	// 	return ((s1) < (s2) ? ft_strdup(s2) : ft_strdup(s1));
 	if (!(str = malloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (0);
 	i = 0;

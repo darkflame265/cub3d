@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kihkim <kihkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 18:03:38 by kihkim            #+#    #+#             */
-/*   Updated: 2020/11/16 17:38:03 by kihkim           ###   ########.fr       */
+/*   Created: 2021/05/19 21:32:18 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/19 21:32:46 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static char		*get_str(char *str)
+static char			*get_str(char *str)
 {
-	char	*rts;
-	int		i;
+	char			*rts;
+	int				i;
 
 	i = 0;
 	if (!str)
@@ -34,11 +34,11 @@ static char		*get_str(char *str)
 	return (rts);
 }
 
-static char		*get_str_next_str(char *str)
+static char			*get_str_next_str(char *str)
 {
-	char	*rts;
-	int		i;
-	int		j;
+	char			*rts;
+	int				i;
+	int				j;
 
 	i = 0;
 	j = 0;
@@ -61,51 +61,26 @@ static char		*get_str_next_str(char *str)
 	return (rts);
 }
 
-int			get_next_line(int fd, char **line, t_info *info)
+int					get_next_line(int fd, char **line, t_info *info)
 {
-	char		*backup;
-	static char	*next_adrs;
-	int			text_length;
+	char			*backup;
+	static char		*next_adrs;
+	int				text_length;
 
 	text_length = 1;
-	if (fd < 0 || !line || BUFFER_SIZE <= 0)
-		return (-1);
-	if (!(backup = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	if (check_backup(fd, line, &backup) == -1)
 		return (-1);
 	while (check_str_has_n(next_adrs) == 0 &&
 	(text_length = read(fd, backup, BUFFER_SIZE)) >= 0)
 	{
-		backup[text_length] = '\0';
-		if (next_adrs == NULL)
-			next_adrs = ft_strdup(backup);
-		else
-			next_adrs = ft_strjoin(next_adrs, backup);
-		if (check_str_has_n(next_adrs) == 1 || text_length == 0)
-			break;
+		if (super(text_length, &next_adrs, fd, backup) == 0)
+			break ;
 	}
 	free(backup);
-	if (text_length == -1)
-		return (-1);
+	if (text_length == -1 || text_length == 0)
+		return (text_length);
 	*line = get_str(next_adrs);
-
-	check_r(*line, info);
-	check_no(*line, info);
-	check_so(*line, info);
-	check_we(*line, info);
-	check_ea(*line, info);
-	check_sprite(*line, info);
-
-	check_ceiling_color(*line, info);
-	check_floor_color(*line, info);
-
-	check_map_size(*line, text_length, info);
-
-
-
-
+	check_series(*line, info);
 	next_adrs = get_str_next_str(next_adrs);
-	if (text_length == 0)
-		return (0);
 	return (1);
-	//return (output(next_adrs, line, text_length));
 }

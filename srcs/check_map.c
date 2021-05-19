@@ -1,79 +1,112 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/17 21:09:33 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/19 22:42:46 by kihkim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
-void	check_map_size(char *line, int text_length, t_info *info)
+void	check_map_line(char *line, t_info *info)
 {
-	int		i = 0;
-	int		fail_flag = 0;
-	char	width_map[text_length];
-	int		stack = 0;
+	int stack;
 
-	//맵 피싱 시작지점 기준을 못 찾음. 내일해. 0510에 해.
-	while (line[i] != '\0')
+	stack = 0;
+	info->i = 0;
+	while (line[info->i] != '\0')
 	{
-		if (line[i] != '0' && line[i] != '1' && line[i] != '2' && line[i] != ' '
-		 && line[i] != 'W' && line[i] != 'E' && line[i] != 'S' && line[i] != 'N'
-		 && line[i] != '\0')
+		if (line[info->i] != '0' && line[info->i] != '1' && line[info->i] != '2'
+		&& line[info->i] != ' ' && line[info->i] != 'W' && line[info->i] != 'E'
+		&& line[info->i] != 'S' && line[info->i] != 'N' &&
+		line[info->i] != '\0' && line[info->i] != 'z')
 		{
-			fail_flag = 1;
+			info->gnl_info.fail_flag = 1;
 		}
-		i++;
+		info->i++;
 	}
-	while (line[i] != '\0')
+	info->i = 0;
+	while (line[info->i] != '\0')
 	{
-		if (line[i] == ' ')
+		if (line[info->i] == ' ')
 			stack++;
-		i++;
+		info->i++;
 	}
-	if (stack == i)
-		fail_flag = 1;
-	if (fail_flag == 0)
+	if (stack == info->i)
+		info->gnl_info.fail_flag = 1;
+}
+
+void	check_map_size(char *line, t_info *info)
+{
+	info->i = 0;
+	info->gnl_info.fail_flag = 0;
+	check_map_line(line, info);
+	if (info->gnl_info.fail_flag == 0)
 	{
-		while (line[i] != '\0')
-			i++;
+		while (line[info->i] != '\0')
+			info->i++;
 		info->gnl_info.start_flag = 1;
-		if (info->gnl_info.max_width < i)
-			info->gnl_info.max_width = i;
+		if (info->gnl_info.mw < info->i)
+			info->gnl_info.mw = info->i;
 	}
-	if (fail_flag == 0)
+	if (info->gnl_info.fail_flag == 0)
 	{
-		i = 0;
-		while (line[i] != '\0')
+		info->i = 0;
+		while (line[info->i] != '\0')
 		{
-			//width_map[i] = line[i];
-			info->gnl_info.temp_map[info->gnl_info.max_height][i] = line[i];
-			i++;
+			info->gnl_info.temp_map[info->gnl_info.mh][info->i] = line[info->i];
+			info->gnl_info.mw2[info->gnl_info.mh]++;
+			info->i++;
 		}
-		info->gnl_info.temp_map[info->gnl_info.max_height][i] = line[i];
-		info->gnl_info.max_height++;
+		info->gnl_info.temp_map[info->gnl_info.mh][info->i] = line[info->i];
+		info->gnl_info.mh++;
 	}
+}
+
+int		check_aroung_algo(t_info *info, int i, int j)
+{
+	if ((info->gnl_info.temp_map[i - 1][j] == ' ' ||
+	info->gnl_info.temp_map[i - 1][j] == 0) ||
+	(info->gnl_info.temp_map[i + 1][j] == ' ' ||
+	info->gnl_info.temp_map[i + 1][j] == 0) ||
+	(info->gnl_info.temp_map[i][j + 1] == ' ' ||
+	info->gnl_info.temp_map[i][j + 1] == 0) ||
+	(info->gnl_info.temp_map[i][j - 1] == ' ' ||
+	info->gnl_info.temp_map[i][j - 1] == 0))
+	{
+		info->gnl_info.error_x = i;
+		info->gnl_info.error_y = j;
+		return (0);
+	}
+	return (1);
 }
 
 int		check_map_is_safe(t_info *info)
 {
-	for (int i = 0; i < info->gnl_info.max_height; i++)
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < info->gnl_info.mh)
 	{
-		for (int j = 0; j < info->gnl_info.max_width; j++)
+		j = 0;
+		while (j < info->gnl_info.mw2[i])
 		{
-			if (info->gnl_info.temp_map[i][j] != '1' && info->gnl_info.temp_map[i][j] != ' ' && info->gnl_info.temp_map[i][j] != 0)
+			if (info->gnl_info.temp_map[i][j] != '1' &&
+			info->gnl_info.temp_map[i][j] != ' ' &&
+			info->gnl_info.temp_map[i][j] != 0)
 			{
-				//위를 검사.
-				if ((info->gnl_info.temp_map[i - 1][j] == ' ' || info->gnl_info.temp_map[i - 1][j] == 0) ||
-				(info->gnl_info.temp_map[i + 1][j] == ' ' || info->gnl_info.temp_map[i + 1][j] == 0) ||
-				(info->gnl_info.temp_map[i][j + 1] == ' ' || info->gnl_info.temp_map[i][j + 1] == 0) ||
-				(info->gnl_info.temp_map[i][j - 1] == ' ' || info->gnl_info.temp_map[i][j - 1] == 0))
-				{
-					info->gnl_info.error_x = i;
-					info->gnl_info.error_y = j;
+				if (check_aroung_algo(info, i, j) == 0)
 					return (0);
-				}
-
 			}
+			j++;
 		}
+		i++;
 	}
-	int i = 2;
-	int j = 5;
-	// printf("info->gnl_info.temp_map[%d][%d]: %c\n", i, j, info->gnl_info.temp_map[i][j]);
-	// printf("info->gnl_info.temp_map[%d][%d]: %d\n", i, j, info->gnl_info.temp_map[i][j]);
-
 	return (1);
 }

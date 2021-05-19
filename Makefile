@@ -6,7 +6,7 @@
 #    By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/29 23:05:04 by kihkim            #+#    #+#              #
-#    Updated: 2021/05/17 18:10:39 by kihkim           ###   ########.fr        #
+#    Updated: 2021/05/20 01:35:31 by kihkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,29 @@ NAME = cub3D
 
 SRCS			=	main2.c \
 					srcs/key_press.c \
+					srcs/key_press2.c \
 					srcs/draw.c\
+					srcs/draw_bitmap.c\
+					srcs/draw_bitmap_util.c\
 					srcs/raycasting.c\
+					srcs/raycasting_util.c\
 					srcs/init_variable.c\
+					srcs/init_map.c\
+					srcs/init_map2.c\
 					srcs/get_next_line_utils.c\
 					srcs/get_next_line.c\
+					srcs/get_next_line2.c\
 					srcs/utils.c\
 					srcs/parsing1.c\
+					srcs/parsing2.c\
 					srcs/pars_ceil_floor.c\
 					srcs/check_file.c\
 					srcs/check_map.c\
 					srcs/parsing_util.c\
 					srcs/parsing_util2.c\
 					srcs/pars_def.c\
+					srcs/memory_clean.c\
+					srcs/set_image.c\
 
 SRCS_BONUS = 	#srcs/key_press.c \
 
