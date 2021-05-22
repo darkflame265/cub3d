@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting_util.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/23 00:43:07 by kihkim            #+#    #+#             */
+/*   Updated: 2021/05/23 00:43:08 by kihkim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 float	dist(float ax, float ay, float bx, float by)
 {
-	return ( sqrt ((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
+	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }
 
 void	sort_order(t_pair *orders, int amount)

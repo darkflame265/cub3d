@@ -6,28 +6,30 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:15:30 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/19 22:32:45 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 02:00:29 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int		check_file(t_info *info)
+void	error_pt(t_info *info, char *path, char *message)
 {
-	int	error_flag;
+	if (access(path, 0) < 0)
+	{
+		printf("%s\n", message);
+		info->error_flag = 1;
+	}
+}
 
-	error_flag = 0;
-	if (error_flag = access(info->gnl_info.path_no, 0) < 0)
-		printf("[ERROR] Can't find NO file.\n");
-	if (error_flag = access(info->gnl_info.path_so, 0) < 0)
-		printf("[ERROR] Can't find SO file.\n");
-	if (error_flag = access(info->gnl_info.path_we, 0) < 0)
-		printf("[ERROR] Can't find WE file.\n");
-	if (error_flag = access(info->gnl_info.path_ea, 0) < 0)
-		printf("[ERROR] Can't find EA file.\n");
-	if (error_flag = access(info->gnl_info.path_sprite, 0) < 0)
-		printf("[ERROR] Can't find SPRITE file.\n");
-	if (error_flag < 0)
+int		check_src_file(t_info *info)
+{
+	info->error_flag = 0;
+	error_pt(info, info->gnl_info.path_no, "[ERROR] Can't find NO file.");
+	error_pt(info, info->gnl_info.path_so, "[ERROR] Can't find SO file.");
+	error_pt(info, info->gnl_info.path_we, "[ERROR] Can't find WE file.");
+	error_pt(info, info->gnl_info.path_ea, "[ERROR] Can't find EA file.");
+	error_pt(info, info->gnl_info.path_sp, "[ERROR] Can't find SP file.");
+	if (info->error_flag == 1)
 		return (0);
 	else
 		return (1);

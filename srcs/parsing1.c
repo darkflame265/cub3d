@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 00:55:36 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 01:13:58 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 01:43:17 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		check_defi(char *line, t_info *info, char c1, char c2)
 		info->pas_info.i++;
 }
 
+// 해상도가 600 600 600 3개여도 정상작동 되는 버그.
 void		check_r(char *line, t_info *info)
 {
 	char	wid[50];

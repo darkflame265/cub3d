@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 01:14:10 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 01:14:33 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 02:00:48 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,11 @@ void		check_sprite(char *line, t_info *info)
 		while ((line[info->pas_info.i] != '\0'))
 			sprite[result_index++] = line[info->pas_info.i++];
 		sprite[result_index++] = '\0';
-		info->gnl_info.path_sprite = malloc(sizeof(char) * result_index);
+		info->gnl_info.path_sp = malloc(sizeof(char) * result_index);
 		info->pas_info.i = 0;
 		while (info->pas_info.i < result_index)
 		{
-			info->gnl_info.path_sprite[info->pas_info.i] =
+			info->gnl_info.path_sp[info->pas_info.i] =
 			sprite[info->pas_info.i];
 			info->pas_info.i++;
 		}

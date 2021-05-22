@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:43:15 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/19 22:50:06 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 01:55:43 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_basic(t_info *info)
 	info->gnl_info.mh = 0;
 	info->gnl_info.start_flag = 0;
 	info->save_flag = 0;
+	info->error_flag = 0;
 	memory_clean(info);
 }
 
@@ -82,4 +83,10 @@ void	init_texture(t_info *info)
 		}
 		i++;
 	}
+}
+
+void	init_buf_texture(t_info *info)
+{
+	init_buf(info);
+	init_texture(info);
 }

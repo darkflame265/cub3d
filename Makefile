@@ -6,7 +6,7 @@
 #    By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/29 23:05:04 by kihkim            #+#    #+#              #
-#    Updated: 2021/05/20 01:35:31 by kihkim           ###   ########.fr        #
+#    Updated: 2021/05/23 00:59:18 by kihkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,15 @@ MLX = -lmlx -lX11 -lXext -lm -lbsd
 
 NAME = cub3D
 
-SRCS			=	main2.c \
+SRCS			=	cub3d.c \
 					srcs/key_press.c \
 					srcs/key_press2.c \
 					srcs/draw.c\
 					srcs/draw_bitmap.c\
 					srcs/draw_bitmap_util.c\
 					srcs/raycasting.c\
+					srcs/raycasting2.c\
+					srcs/raycasting3.c\
 					srcs/raycasting_util.c\
 					srcs/init_variable.c\
 					srcs/init_map.c\

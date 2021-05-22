@@ -31,6 +31,31 @@
 #define vDiv 1
 #define vMove 0.0
 
+
+typedef struct	s_sp_info
+{
+		double spriteX;
+		double spriteY;
+		double invDet;
+		double transformX;
+		double transformY;
+		int spriteScreenX;
+		int vMoveScreen;
+		int spriteHeight;
+		int drawStartY;
+
+		int drawEndY;
+		int spriteWidth;
+		int drawStartX;
+		int drawEndX;
+
+		int tex_x;
+		int tex_y;
+		int color;
+		int d;
+
+}				t_sp_info;
+
 typedef struct	s_bit_info
 {
 	char			*image_file_name;
@@ -78,7 +103,7 @@ typedef struct s_gnl_info
 	char	*path_so;
 	char	*path_ea;
 	char	*path_we;
-	char	*path_sprite;
+	char	*path_sp;
 	int		ff[3];
 	int		cc[3];
 	int		mapX;
@@ -120,6 +145,38 @@ typedef struct	s_tex
 	int		tex_height;
 }				t_tex;
 
+typedef struct	s_calc
+{
+	int		drawStart;
+	int		drawEnd;
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+
+	int mapX;
+	int mapY;
+
+	double sideDistX;
+	double sideDistY;
+
+	double stepX;
+ 	double stepY;
+
+	int hit;
+	int side;
+
+	double deltaDistX;
+	double deltaDistY;
+
+	double perpWallDist;
+	int lineHeight;
+
+	int		color;
+	int		texNum;
+	double	wallX;
+	int		tex_x;
+}				t_calc;
+
 typedef struct	s_info
 {
 	int		key_check[65536];
@@ -152,10 +209,13 @@ typedef struct	s_info
 	t_gnl_info	gnl_info;
 	t_pas_info	pas_info;
 	t_bit_info	bit_info;
+	t_sp_info	sp_info;
+	t_calc		calc;
 
 	int		save_flag;
 	int		i;
 	int		j;
+	int		error_flag;
 }				t_info;
 
 #define numSprites 19
@@ -207,7 +267,19 @@ unsigned char	*create_bitmapinfo_header(int height, int width);
 void			generate_bitmap_image(unsigned char *image, t_info *info);
 
 //srcs/raycasting.c
+void	get_texture(t_info *info);
+void	draw_wall(t_info *info, int x);
 void	calc(t_info *info);
+//srcs/raycasting.c
+void	next_step(t_info *info);
+void	check_hit_wall(t_info *info);
+void	get_clean_dist(t_info *info);
+void	get_pixel_destination(t_info *info);
+void	get_wall_pos(t_info *info);
+
+//srcs/raycasting.c
+void	sprite_part(t_info *info);
+
 
 //srcs/raycasting_util.c
 float dist(float ax, float ay, float bx, float by);
@@ -218,6 +290,9 @@ void	sort_sprites(int *order, double *dist, int amount);
 void	init_basic(t_info *info);
 void	init_buf(t_info *info);
 void	init_texture(t_info *info);
+void	init_buf_texture(t_info *info);
+
+
 void	load_image(t_info *info, char *path, t_img *img, int tex_num);
 void    load_texture(t_info *info);
 
@@ -252,7 +327,6 @@ int	ft_atoi(const char *str);
 int	ft_strncmp(char *s1, char *s2, unsigned int n);
 
 //srcs/parsing1.c
-int			check_file(t_info *info);
 void		check_defi(char *line, t_info *info, char c1, char c2);
 void		check_r(char *line, t_info *info);
 
@@ -277,7 +351,9 @@ int			check_map_is_safe(t_info *info);
 
 //srcs/check_file.c
 void	read_file(char **argv, t_info *info);
-int		check_file(t_info *info);
+void	error_pt(t_info *info, char *path, char *message);
+int		check_file(t_info *info, char *path);
+int		check_src_file(t_info *info);
 int		check_value(t_info *info);
 
 //srcs/parsing_util.c

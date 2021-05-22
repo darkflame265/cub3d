@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 00:42:44 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 00:42:44 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 00:58:41 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ void			set_bit_info(t_info *info)
 	int i;
 
 	i = 0;
-	while (i < 3)
-	{
-		info->bit_info.file_header[i] = 0;
-		i++;
-	}
 	info->bit_info.width_in_bytes = info->gnl_info.wid * BP;
 	info->bit_info.padding_size = (4 - (info->bit_info.width_in_bytes) % 4) % 4;
 	info->bit_info.stride = (info->bit_info.width_in_bytes)
@@ -85,8 +80,8 @@ void			generate_bitmap_image(unsigned char *image, t_info *info)
 {
 	int				i;
 
-	set_bit_info(info);
 	i = 0;
+	set_bit_info(info);
 	while (i < info->gnl_info.hei)
 	{
 		fwrite(image + (i * info->bit_info.width_in_bytes),

@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:50:34 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/19 22:50:34 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 02:01:09 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	load_texture(t_info *info)
 	load_image(info, info->gnl_info.path_so, &img, 1);
 	load_image(info, info->gnl_info.path_ea, &img, 2);
 	load_image(info, info->gnl_info.path_we, &img, 3);
-	load_image(info, info->gnl_info.path_sprite, &img, 8);
+	load_image(info, info->gnl_info.path_sp, &img, 8);
 	load_image(info, "pics/enemy.xpm", &img, 9);
 	load_image(info, "pics/barrel.xpm", &img, 10);
 }
