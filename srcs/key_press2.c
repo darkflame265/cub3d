@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 01:29:17 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 01:29:25 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 23:43:45 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	key_w_s(t_info *info)
 {
 	if (info->key_check[K_W] == 1)
 	{
-		if (info->worldMap[(int)(info->posX +
-		info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
-			info->posX += info->dirX * info->moveSpeed;
-		if (info->worldMap[(int)(info->posX)][(int)(info->posY +
-		info->dirY * info->moveSpeed)] != '1')
-			info->posY += info->dirY * info->moveSpeed;
+		if (info->world_map[(int)(info->pos_x +
+		info->dir_x * info->move_speed)][(int)(info->pos_y)] != '1')
+			info->pos_x += info->dir_x * info->move_speed;
+		if (info->world_map[(int)(info->pos_x)][(int)(info->pos_y +
+		info->dir_y * info->move_speed)] != '1')
+			info->pos_y += info->dir_y * info->move_speed;
 	}
 	if (info->key_check[K_S] == 1)
 	{
-		if (info->worldMap[(int)(info->posX -
-		info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
-			info->posX -= info->dirX * info->moveSpeed;
-		if (info->worldMap[(int)(info->posX)][(int)(info->posY -
-		info->dirY * info->moveSpeed)] != '1')
-			info->posY -= info->dirY * info->moveSpeed;
+		if (info->world_map[(int)(info->pos_x -
+		info->dir_x * info->move_speed)][(int)(info->pos_y)] != '1')
+			info->pos_x -= info->dir_x * info->move_speed;
+		if (info->world_map[(int)(info->pos_x)][(int)(info->pos_y -
+		info->dir_y * info->move_speed)] != '1')
+			info->pos_y -= info->dir_y * info->move_speed;
 	}
 }
 
@@ -39,18 +39,18 @@ void	key_d(t_info *info)
 	double old_dir_x;
 	double old_plane_x;
 
-	old_dir_x = info->dirX;
-	old_plane_x = info->planeX;
+	old_dir_x = info->dir_x;
+	old_plane_x = info->plane_x;
 	if (info->key_check[K_D] == 1)
 	{
-		info->dirX = info->dirX * cos(-info->rotSpeed) -
-		info->dirY * sin(-info->rotSpeed);
-		info->dirY = old_dir_x * sin(-info->rotSpeed) +
-		info->dirY * cos(-info->rotSpeed);
-		info->planeX = info->planeX * cos(-info->rotSpeed) -
-		info->planeY * sin(-info->rotSpeed);
-		info->planeY = old_plane_x * sin(-info->rotSpeed) +
-		info->planeY * cos(-info->rotSpeed);
+		info->dir_x = info->dir_x * cos(-info->rot_speed) -
+		info->dir_y * sin(-info->rot_speed);
+		info->dir_y = old_dir_x * sin(-info->rot_speed) +
+		info->dir_y * cos(-info->rot_speed);
+		info->plane_x = info->plane_x * cos(-info->rot_speed) -
+		info->plane_y * sin(-info->rot_speed);
+		info->plane_y = old_plane_x * sin(-info->rot_speed) +
+		info->plane_y * cos(-info->rot_speed);
 	}
 }
 
@@ -59,19 +59,25 @@ void	key_a(t_info *info)
 	double old_dir_x;
 	double old_plane_x;
 
-	old_dir_x = info->dirX;
-	old_plane_x = info->planeX;
+	old_dir_x = info->dir_x;
+	old_plane_x = info->plane_x;
 	if (info->key_check[K_A] == 1)
 	{
-		info->dirX = info->dirX * cos(info->rotSpeed) -
-		info->dirY * sin(info->rotSpeed);
-		info->dirY = old_dir_x * sin(info->rotSpeed) +
-		info->dirY * cos(info->rotSpeed);
-		info->planeX = info->planeX * cos(info->rotSpeed) -
-		info->planeY * sin(info->rotSpeed);
-		info->planeY = old_plane_x * sin(info->rotSpeed) +
-		info->planeY * cos(info->rotSpeed);
+		info->dir_x = info->dir_x * cos(info->rot_speed) -
+		info->dir_y * sin(info->rot_speed);
+		info->dir_y = old_dir_x * sin(info->rot_speed) +
+		info->dir_y * cos(info->rot_speed);
+		info->plane_x = info->plane_x * cos(info->rot_speed) -
+		info->plane_y * sin(info->rot_speed);
+		info->plane_y = old_plane_x * sin(info->rot_speed) +
+		info->plane_y * cos(info->rot_speed);
 	}
+}
+
+int		press_exit_button(t_info *info)
+{
+	exit(0);
+	return (0);
 }
 
 int		key_press(t_info *info)

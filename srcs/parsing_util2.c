@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 01:34:11 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 01:34:12 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 23:16:22 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int		sep_r(char *line, t_info *info, int res)
 	{
 		if (line[info->pas_info.i] == ' ')
 		{
-			info->pas_info.check = 1;
 			info->pas_info.i0 = 0;
+			if ((line[info->pas_info.i + 1] >= 48 &&
+			line[info->pas_info.i + 1] <= 57) == 1)
+				info->pas_info.check++;
 		}
 		else if (line[info->pas_info.i] == ',')
 		{

@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:50:34 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/23 02:01:09 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/24 00:17:47 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	load_image(t_info *info, char *path, t_img *img, int tex_num)
 	input_image_data(info, path, img);
 	info->tex[tex_num].tex_width = img->img_width;
 	info->tex[tex_num].tex_height = img->img_height;
-	if (img->img_width != texWidth || img->img_height != texHeight)
+	if (img->img_width != TEXWIDTH || img->img_height != TEXHEIGHT)
 	{
 		info->texture[tex_num] = realloc(info->texture[tex_num],
 		(sizeof(int) * (img->img_width * img->img_height)));

@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:10:11 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/19 22:41:21 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 23:39:41 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	set_map_size(t_info *info)
 	int i;
 
 	i = 0;
-	info->worldMap = (char **)malloc(sizeof(char *) * info->gnl_info.mh);
+	info->world_map = (char **)malloc(sizeof(char *) * info->gnl_info.mh);
 	while (i < info->gnl_info.mh)
 	{
-		info->worldMap[i] = (char *)malloc(sizeof(char) * info->gnl_info.mw);
+		info->world_map[i] = (char *)malloc(sizeof(char) * info->gnl_info.mw);
 		i++;
 	}
 }
@@ -41,7 +41,7 @@ void	init_map(t_info *info)
 		{
 			if (info->gnl_info.temp_map[i][j] == '\0')
 				break ;
-			info->worldMap[i][j] = info->gnl_info.temp_map[i][j];
+			info->world_map[i][j] = info->gnl_info.temp_map[i][j];
 			set_east(info, i, j);
 			set_north(info, i, j);
 			set_south(info, i, j);

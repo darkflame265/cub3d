@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 01:15:32 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 01:15:32 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 23:15:10 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ void	put_letter(char *line, t_info *info)
 	info->pas_info.letter[info->pas_info.i0] = line[info->pas_info.i];
 	info->pas_info.i0++;
 	if ((line[info->pas_info.i] >= 48 && line[info->pas_info.i] <= 57) == 0)
+	{
 		info->pas_info.letter[info->pas_info.i0] = '\0';
+	}
 }

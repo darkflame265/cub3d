@@ -6,7 +6,7 @@
 #    By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/29 23:05:04 by kihkim            #+#    #+#              #
-#    Updated: 2021/05/23 00:59:18 by kihkim           ###   ########.fr        #
+#    Updated: 2021/05/23 23:20:55 by kihkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ clean :
 
 fclean : clean
 	rm -rf $(NAME)
-	rm -rf cub3d.bmp
+	rm -rf bitmapImage.bmp
 
 re : fclean all
 

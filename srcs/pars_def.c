@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 01:14:56 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/20 01:14:56 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 23:13:43 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ void	def_r(t_info *info)
 			info->pas_info.letter = info->pas_info.wid;
 		if (info->pas_info.check == 1)
 			info->pas_info.letter = info->pas_info.hei;
+		if (info->pas_info.check > 1)
+		{
+			info->pas_info.level = 0;
+		}
 	}
 }

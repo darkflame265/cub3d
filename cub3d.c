@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 01:49:39 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/23 01:59:30 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/23 22:40:03 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	create_window(t_info *info)
 	mlx_loop_hook(info->mlx, &main_loop, info);
 	mlx_hook(info->win, 2, (1L << 0), button_down, info);
 	mlx_hook(info->win, 3, (1L << 1), button_release, info);
+	mlx_hook(info->win, 33, (1L << 3), press_exit_button, info);
 }
 
 int		check_opt(t_info *info, int argc, char **argv)

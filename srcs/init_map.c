@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:17:29 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/19 22:20:07 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/24 00:34:43 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	set_north(t_info *info, int i, int j)
 {
-	if (info->worldMap[i][j] == 'n' || info->worldMap[i][j] == 'N')
+	if (info->world_map[i][j] == 'n' || info->world_map[i][j] == 'N')
 	{
-		info->posX = i + 0.5f;
-		info->posY = j + 0.5f;
+		info->pos_x = i + 0.5f;
+		info->pos_y = j + 0.5f;
 	}
 }
 
@@ -26,24 +26,24 @@ void	set_east(t_info *info, int i, int j)
 	int		z;
 	double	old_dir_x;
 	double	old_plane_x;
-	double	cos_minus;
-	double	sin_minus;
+	double	cos_min;
+	double	sin_min;
 
-	cos_minus = cos(-info->rotSpeed);
-	sin_minus = sin(-info->rotSpeed);
+	cos_min = cos(-info->rot_speed);
+	sin_min = sin(-info->rot_speed);
 	z = 0;
-	if (info->worldMap[i][j] == 'e' || info->worldMap[i][j] == 'E')
+	if (info->world_map[i][j] == 'e' || info->world_map[i][j] == 'E')
 	{
-		info->posX = i + 0.5f;
-		info->posY = j + 0.5f;
+		info->pos_x = i + 0.5f;
+		info->pos_y = j + 0.5f;
 		while (z < 30)
 		{
-			old_dir_x = info->dirX;
-			old_plane_x = info->planeX;
-			info->dirX = info->dirX * cos_minus - info->dirY * sin_minus;
-			info->dirY = old_dir_x * sin_minus + info->dirY * cos_minus;
-			info->planeX = info->planeX * cos_minus - info->planeY * sin_minus;
-			info->planeY = old_plane_x * sin_minus + info->planeY * cos_minus;
+			old_dir_x = info->dir_x;
+			old_plane_x = info->plane_x;
+			info->dir_x = info->dir_x * cos_min - info->dir_y * sin_min;
+			info->dir_y = old_dir_x * sin_min + info->dir_y * cos_min;
+			info->plane_x = info->plane_x * cos_min - info->plane_y * sin_min;
+			info->plane_y = old_plane_x * sin_min + info->plane_y * cos_min;
 			z++;
 		}
 	}
@@ -57,21 +57,21 @@ void	set_south(t_info *info, int i, int j)
 	double	cos_plus;
 	double	sin_plus;
 
-	cos_plus = cos(info->rotSpeed);
-	sin_plus = sin(info->rotSpeed);
+	cos_plus = cos(info->rot_speed);
+	sin_plus = sin(info->rot_speed);
 	z = 0;
-	if (info->worldMap[i][j] == 's' || info->worldMap[i][j] == 'S')
+	if (info->world_map[i][j] == 's' || info->world_map[i][j] == 'S')
 	{
-		info->posX = i + 0.5f;
-		info->posY = j + 0.5f;
+		info->pos_x = i + 0.5f;
+		info->pos_y = j + 0.5f;
 		while (z < 60)
 		{
-			old_dir_x = info->dirX;
-			old_plane_x = info->planeX;
-			info->dirX = info->dirX * cos_plus - info->dirY * sin_plus;
-			info->dirY = old_dir_x * sin_plus + info->dirY * cos_plus;
-			info->planeX = info->planeX * cos_plus - info->planeY * sin_plus;
-			info->planeY = old_plane_x * sin_plus + info->planeY * cos_plus;
+			old_dir_x = info->dir_x;
+			old_plane_x = info->plane_x;
+			info->dir_x = info->dir_x * cos_plus - info->dir_y * sin_plus;
+			info->dir_y = old_dir_x * sin_plus + info->dir_y * cos_plus;
+			info->plane_x = info->plane_x * cos_plus - info->plane_y * sin_plus;
+			info->plane_y = old_plane_x * sin_plus + info->plane_y * cos_plus;
 			z++;
 		}
 	}
@@ -85,21 +85,21 @@ void	set_west(t_info *info, int i, int j)
 	double	cos_plus;
 	double	sin_plus;
 
-	cos_plus = cos(info->rotSpeed);
-	sin_plus = sin(info->rotSpeed);
+	cos_plus = cos(info->rot_speed);
+	sin_plus = sin(info->rot_speed);
 	z = 0;
-	if (info->worldMap[i][j] == 'w' || info->worldMap[i][j] == 'W')
+	if (info->world_map[i][j] == 'w' || info->world_map[i][j] == 'W')
 	{
-		info->posX = i + 0.5f;
-		info->posY = j + 0.5f;
+		info->pos_x = i + 0.5f;
+		info->pos_y = j + 0.5f;
 		while (z < 30)
 		{
-			old_dir_x = info->dirX;
-			old_plane_x = info->planeX;
-			info->dirX = info->dirX * cos_plus - info->dirY * sin_plus;
-			info->dirY = old_dir_x * sin_plus + info->dirY * cos_plus;
-			info->planeX = info->planeX * cos_plus - info->planeY * sin_plus;
-			info->planeY = old_plane_x * sin_plus + info->planeY * cos_plus;
+			old_dir_x = info->dir_x;
+			old_plane_x = info->plane_x;
+			info->dir_x = info->dir_x * cos_plus - info->dir_y * sin_plus;
+			info->dir_y = old_dir_x * sin_plus + info->dir_y * cos_plus;
+			info->plane_x = info->plane_x * cos_plus - info->plane_y * sin_plus;
+			info->plane_y = old_plane_x * sin_plus + info->plane_y * cos_plus;
 			z++;
 		}
 	}
@@ -107,11 +107,11 @@ void	set_west(t_info *info, int i, int j)
 
 void	set_sprite(t_info *info, int i, int j)
 {
-	if (info->worldMap[i][j] == '2')
+	if (info->world_map[i][j] == '2')
 	{
-		sprite[info->sprite_stack].x = i + 0.5;
-		sprite[info->sprite_stack].y = j + 0.5;
-		sprite[info->sprite_stack].texture = 8;
+		info->sprites[info->sprite_stack].x = i + 0.5;
+		info->sprites[info->sprite_stack].y = j + 0.5;
+		info->sprites[info->sprite_stack].texture = 8;
 		info->sprite_stack++;
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:32:18 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/19 21:32:46 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/24 00:33:30 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static char			*get_str(char *str)
+static char		*get_str(char *str)
 {
 	char			*rts;
 	int				i;
@@ -34,7 +34,7 @@ static char			*get_str(char *str)
 	return (rts);
 }
 
-static char			*get_str_next_str(char *str)
+static char		*get_str_next_str(char *str)
 {
 	char			*rts;
 	int				i;
@@ -61,7 +61,19 @@ static char			*get_str_next_str(char *str)
 	return (rts);
 }
 
-int					get_next_line(int fd, char **line, t_info *info)
+int				super(int text_length, char **next_adrs, int fd, char *backup)
+{
+	backup[text_length] = '\0';
+	if (*next_adrs == NULL)
+		*next_adrs = (char*)ft_strdup(backup);
+	else
+		*next_adrs = (char*)ft_strjoin(*next_adrs, backup);
+	if (check_str_has_n(*next_adrs) == 1 || text_length == 0)
+		return (0);
+	return (1);
+}
+
+int				get_next_line(int fd, char **line, t_info *info)
 {
 	char			*backup;
 	static char		*next_adrs;
