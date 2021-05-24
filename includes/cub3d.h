@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 23:21:16 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/24 00:32:12 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/24 21:40:52 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@
 # define K_S 115
 # define K_D 100
 # define K_ESC 65307
+
+# define KEY_UP_ARROW 65362
+# define KEY_LEFT_ARROW 65361
+# define KEY_DOWN_ARROW 65364
+# define KEY_RIGHT_ARROW 65363
 
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
@@ -217,6 +222,7 @@ int					button_down(int keycode, t_info *info);
 int					button_release(int keycode, t_info *info);
 int					press_exit_button(t_info *info);
 int					key_press(t_info *info);
+void				key_arrow(t_info *info);
 void				draw(t_info *info);
 void				save_bmp(t_info *info);
 void				set_bit_info(t_info *info);

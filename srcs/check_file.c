@@ -6,7 +6,7 @@
 /*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:15:30 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/23 02:00:29 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/24 21:25:36 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ int		check_r_value(t_info *info)
 	}
 	if (info->gnl_info.wid > max_x || info->gnl_info.hei > max_y)
 	{
-		printf("[ERROR] Set Resolution is too big.\n");
-		return (0);
+		printf("[WARNING] Set Resolution is too big.\n");
+		info->gnl_info.wid = max_x;
+		info->gnl_info.hei = max_y;
+		return (1);
 	}
 	return (1);
 }
