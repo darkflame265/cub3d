@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: kihkim <kihkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 00:02:05 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/24 00:32:32 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/25 15:50:10 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,16 @@ void	draw_ceil_floor(t_info *info, int x)
 {
 	int	z;
 
+	info->calc.color = (info->gnl_info.cc[0] << 16) |
+	(info->gnl_info.cc[1] << 8) | (info->gnl_info.cc[2]);
 	z = 0;
-	info->calc.color = (255 << 24);
-	info->calc.color = info->calc.color | (info->gnl_info.cc[0] << 16);
-	info->calc.color = info->calc.color | (info->gnl_info.cc[1] << 8);
-	info->calc.color = info->calc.color | (info->gnl_info.cc[2] << 0);
 	while (z <= info->calc.draw_start)
 	{
 		info->buf[z][x] = info->calc.color;
 		z++;
 	}
-	info->calc.color = (255 << 24);
-	info->calc.color = info->calc.color | (info->gnl_info.ff[0] << 16);
-	info->calc.color = info->calc.color | (info->gnl_info.ff[1] << 8);
-	info->calc.color = info->calc.color | (info->gnl_info.ff[2] << 0);
+	info->calc.color = (info->gnl_info.ff[0] << 16) |
+	(info->gnl_info.ff[1] << 8) | (info->gnl_info.ff[2]);
 	z = info->calc.draw_end;
 	while (z <= info->height - 1)
 	{
@@ -100,7 +96,7 @@ void	calc(t_info *info)
 	int	x;
 
 	x = 0;
-	while (x < info->width)
+	while (x < info->gnl_info.wid)
 	{
 		init_calc_info(info, x);
 		next_step(info);

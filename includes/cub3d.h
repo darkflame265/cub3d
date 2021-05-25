@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: kihkim <kihkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 23:21:16 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/24 21:40:52 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/25 15:53:26 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../minilibx-linux/mlx.h"
-# include "X11/X.h"
+# include "../minilibx_opengl_20191021/mlx.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -23,17 +22,19 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define BUFFER_SIZE 64
-# define K_W 119
-# define K_A 97
-# define K_S 115
-# define K_D 100
-# define K_ESC 65307
+# define K_A 0
+# define K_D 2
+# define K_S 1
+# define K_W 13
 
-# define KEY_UP_ARROW 65362
-# define KEY_LEFT_ARROW 65361
-# define KEY_DOWN_ARROW 65364
-# define KEY_RIGHT_ARROW 65363
+# define K_ESC 53
+
+# define KEY_UP_ARROW 126
+# define KEY_LEFT_ARROW 124
+# define KEY_DOWN_ARROW 125
+# define KEY_RIGHT_ARROW 123
+
+# define BUFFER_SIZE 64
 
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
@@ -223,6 +224,7 @@ int					button_release(int keycode, t_info *info);
 int					press_exit_button(t_info *info);
 int					key_press(t_info *info);
 void				key_arrow(t_info *info);
+void				key_arrow2(t_info *info);
 void				draw(t_info *info);
 void				save_bmp(t_info *info);
 void				set_bit_info(t_info *info);

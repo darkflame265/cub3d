@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: kihkim <kihkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 01:29:17 by kihkim            #+#    #+#             */
-/*   Updated: 2021/05/24 21:40:23 by kihkim           ###   ########.fr       */
+/*   Updated: 2021/05/25 15:49:17 by kihkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		key_press(t_info *info)
 	key_d(info);
 	key_a(info);
 	key_arrow(info);
+	key_arrow2(info);
 	if (info->key_check[K_ESC] == 1)
 		exit(0);
 	return (0);

@@ -3,18 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kihkim <kihkim@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: kihkim <kihkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/29 23:05:04 by kihkim            #+#    #+#              #
-#    Updated: 2021/05/23 23:20:55 by kihkim           ###   ########.fr        #
+#    Updated: 2021/05/25 15:39:54 by kihkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
-#MLX = -lmlx -lm -framework OpenGL -framework AppKit
-#MLX = -I /usr/include -g -L /usr/lib -lX11 -lmlx -lXext -lm -fsanitize=address
-MLX = -lmlx -lX11 -lXext -lm -lbsd
+MLX = -L ./minilibx_opengl_20191021 -lmlx  -framework OpenGL -framework AppKit
 
 NAME = cub3D
 

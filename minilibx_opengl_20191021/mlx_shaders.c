@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <OpenGL/gl3.h>
-#include <GL/gl.h>
 #include "mlx_int.h"
 
 
